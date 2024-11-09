@@ -14,22 +14,21 @@ html{
 }
 
 body{
-    background-color: rgb(131, 131, 131);
+    background-color: #fffdf8;
     margin: 0px;
     padding: 0px;
     height: 100%;
 }
 
 header{
-    background-color: #8ce900;
     margin: 0px;
     padding: 10px;
 }
 
 main{
-    max-width: 1000px;
+    max-width: 1400px;
     margin: auto;
-    background-color: rgb(255, 255, 255);
+    background-color: #ffffff;
     flex: 1;
     padding: 10px;
     width: 100%;
@@ -37,12 +36,72 @@ main{
 
 footer{
     margin: 0px;
-    background-color: #8ce900;
     padding: 10px;
+}
+
+header, footer {
+    background-color: #4ace4e ;
 }
 /*  */
 /*  */
 /*  */
+
+header div{
+    max-width: 1000px;
+    margin: auto;
+}
+header div h1 {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+header div nav {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    /* background-color: yellow; */
+    
+}
+nav ul{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px;
+    /* background-color: rebeccapurple; */
+    padding: 10px;
+    min-width: 300px
+}
+
+
+
+nav ul li{
+    display: flex;
+    width: auto;
+    background-color: #CDDC39;
+    border-radius:  3px;
+}
+
+nav ul li:hover {
+    background-color: #2E7D32;
+}
+
+nav ul li a:hover{
+    color: white;
+}
+
+
+
+nav ul li a{
+    display: flex;
+    padding: 10px;
+    margin: auto;
+    justify-content: center;
+    text-decoration: none;
+    width: 70px;
+    color: #333333;
+}
+
 
 p{
     margin: 0px;
@@ -52,7 +111,8 @@ nav{
 }
 
 h1{
-    margin: 0px;
+    margin: auto;
+    color: #333333;
 }
 
 h2{
@@ -60,11 +120,6 @@ h2{
 }
 ul{
     margin: 0px;
-}
-
-nav ul{
-    margin: 0px;
-    padding: 0px;
 }
 
 .navl{
