@@ -1,0 +1,71 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+html{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: rgb(131, 131, 131);
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+header{
+    background-color: #8ce900;
+    margin: 0px;
+    padding: 10px;
+}
+
+main{
+    width: 1000px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    flex: 1;
+    padding: 10px;
+}
+
+footer{
+    margin: 0px;
+    background-color: #8ce900;
+    padding: 10px;
+}
+/*  */
+/*  */
+/*  */
+
+p{
+    margin: 0px;
+}
+nav{
+    padding: 10px;
+}
+
+h1{
+    margin: 0px;
+}
+
+h2{
+    margin: 0px;
+}
+ul{
+    margin: 0px;
+}
+
+nav ul{
+    margin: 0px;
+    padding: 0px;
+}
+
+.navl{
+    margin: 0px;
+}
