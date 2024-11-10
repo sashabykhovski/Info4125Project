@@ -11,10 +11,11 @@ html, body {
 html{
     margin: 0px;
     padding: 0px;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body{
-    background-color: #fffdf8;
+    background-color: #F7F9FC;
     margin: 0px;
     padding: 0px;
     height: 100%;
@@ -32,30 +33,52 @@ main{
     flex: 1;
     padding: 10px;
     width: 100%;
+    color: #626e76;
 }
+
 
 footer{
     margin: 0px;
     padding: 10px;
+    color: #efefef;
 }
 
 header, footer {
-    background-color: #4ace4e ;
+    background-color: #2E3A59 ;
 }
 /*  */
 /*  */
 /*  */
+
+/* Light font for dark BG: color: #ffffff; */
+/* Dark font for Light BG: color: #626e76; */
+
 
 header div{
     max-width: 1000px;
     margin: auto;
 }
-header div h1 {
+footer div{
+    margin: auto;
+    max-width: 1400px;
+}
+
+header div h1{
     max-width: 400px;
     margin: auto;
     display: flex;
     justify-content: center;
+    color: #ffffff;
+    font-size: 50px;
 }
+header div h2{
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: #ffffff;
+}
+
 header div nav {
     max-width: 400px;
     margin: auto;
@@ -78,12 +101,12 @@ nav ul{
 nav ul li{
     display: flex;
     width: auto;
-    background-color: #CDDC39;
+    background-color: #415483;
     border-radius:  3px;
 }
 
 nav ul li:hover {
-    background-color: #2E7D32;
+    background-color: #6983c6;
 }
 
 nav ul li a:hover{
@@ -99,7 +122,7 @@ nav ul li a{
     justify-content: center;
     text-decoration: none;
     width: 70px;
-    color: #333333;
+    color: #efefef;
 }
 
 
@@ -112,7 +135,6 @@ nav{
 
 h1{
     margin: auto;
-    color: #333333;
 }
 
 h2{
