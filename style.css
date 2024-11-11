@@ -27,13 +27,19 @@ header{
 }
 
 main{
-    max-width: 1400px;
-    margin: auto;
+    min-width: 1000px;
     background-color: #ffffff;
     flex: 1;
     padding: 10px;
     width: 100%;
+    height: 100%;
     color: #626e76;
+}
+
+aside{
+    /* red color is just to see the structure for now */
+    background-color: red;
+    width: 100%;
 }
 
 
@@ -144,6 +150,30 @@ ul{
     margin: 0px;
 }
 
+/*  */
+/* classes */
+/*  */
+
 .navl{
     margin: 0px;
 }
+
+.sidebars{
+    display: flex;
+    flex: 1;
+    margin: auto;
+    max-width: 1400px;
+}
+
+/*  */
+/* styling by ids */
+/*  */
+
+.home-side{
+    display: flex;
+    flex: 1;
+    margin: auto;
+    max-width: 1400px;
+}
+
+
