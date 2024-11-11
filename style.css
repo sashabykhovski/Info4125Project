@@ -50,7 +50,7 @@ footer{
 }
 
 header, footer {
-    background-color: #2E3A59 ;
+    background-color: #37822b ;
 }
 /*  */
 /*  */
@@ -77,8 +77,8 @@ header div h1{
     color: #ffffff;
     font-size: 50px;
 }
-header div h2{
-    max-width: 400px;
+header div h4{
+    max-width: 600px;
     margin: auto;
     display: flex;
     justify-content: center;
@@ -107,12 +107,12 @@ nav ul{
 nav ul li{
     display: flex;
     width: auto;
-    background-color: #415483;
+    background-color: #7fc681;
     border-radius:  3px;
 }
 
 nav ul li:hover {
-    background-color: #6983c6;
+    background-color: rgb(186, 228, 190);
 }
 
 nav ul li a:hover{
@@ -174,6 +174,29 @@ ul{
     flex: 1;
     margin: auto;
     max-width: 1400px;
+}
+
+.image-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.image-row img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    flex: 1;
+}
+
+.text-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #92d394;
+    border-radius: 8px;
+    color: rgb(255, 253, 253);
 }
 
 
