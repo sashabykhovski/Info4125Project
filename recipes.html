@@ -18,26 +18,46 @@
                 </ul>
             </nav>
         </div>
-        <div class = "image-row">
+        <!-- <div class = "image-row">
             <img src="foodpic1.jpg" alt="background" width="400" height="200">
             <img src="foodpic.jpg" alt="background" width="400" height="200">
             <img src="foodpic2.jpeg" alt="background" width="400" height="200">
-        </div>
+        </div> -->
     </header>
-<div id="" class="sidebars">
+    <div class="hero" style="height: 200px;">
+        <img src="images/food-heroimg.jpg" alt="background" >
+    </div>
+
+<div class="sidebars">
+    <aside style="width: 400px;">
+        <div class="form-div">
+        <h2>Meal Planner</h2><br>
+
+        <form action="/recipes.html" method="POST" class="meal-form" >
+            
+            <label for="vegetable">Vegetable:</label>
+            <input type="text" id="vegetable" name="vegetable" placeholder="Enter a vegetable"><br>
+            
+            
+            <label for="protein">Protein:</label>
+            <input type="text" id="protein" name="protein" placeholder="Enter a protein" ><br>
+            
+            
+            <label for="carb">Carbohydrate:</label>
+            <input type="text" id="carb" name="carb" placeholder="Enter a carbohydrate"><br>
+    
+            
+            <button type="submit">Submit Meal</button>
+        </form>
+    </div>
+
+    </aside>
     <main>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fug<br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fug
-        </p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fug<br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fug
-        </p>
+        <h1> *Note* this is where the recipes will show when form is submitted</h1>
       
 
     </main>
-    <aside style="width: 400px;">
 
-    </aside>
 </div>
     <footer>
         <div>
