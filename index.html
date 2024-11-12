@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Food Waste website</title>
+    <title>Smart Pantry</title>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 </head>
+
 <body>
     <header>
         <div>
@@ -18,53 +23,143 @@
                 </ul>
             </nav>
         </div>
-        <!-- <div class = "image-row">
-            <img src="foodpic1.jpg" alt="background" width="400" height="200">
-            <img src="foodpic.jpg" alt="background" width="400" height="200">
-            <img src="foodpic2.jpeg" alt="background" width="400" height="200">
-        </div> -->
-    
     </header>
-    <div class="hero">
-        <img src="images/food-heroimg.jpg" alt="background" >
+
+
+    <div class="sidebars">
+        <div class="hero">
+            <img src="images/food-heroimg.jpg" alt="background" style="width: 100%; height: 200px;">
+        </div>
+        <main>
+            <section>
+                <h4 style="font-size: 2.5em;">About</h4>
+                <div class="text-box about-section" style="font-size: 1.5em;">
+                    <p>Welcome to your go-to solution for smart cooking ideas to save money on groceries and minimize
+                        food waste! Our platform is designed to support college students who are new to cooking and meal
+                        planning as they transition into off-campus life. That's where we come in!
+                    </p>
+                    <img src="images/foodpic.jpg" alt="About Us" style="width: 100%; height: auto; margin-top: 20px;">
+                </div>
+            </section>
+
+            <section>
+                <h4 style="font-size: 2.5em;">Mission Statement</h4>
+                <div class="text-box mission-section" style="font-size: 1.5em;">
+                    <p>We offer a user-friendly platform that makes meal planning easy and efficient. By taking your
+                        dietary preferences and grocery list items, our platform will curate easy-to-make recipes with
+                        only a few additional ingredients needed.
+                    </p>
+                    <img src="images/foodpic1.jpg" alt="Mission" style="width: 100%; height: auto; margin-top: 20px;">
+                </div>
+            </section>
+
+            <!-- Authentication Section -->
+            <section id="auth-section">
+                <h4 id="auth-greeting" style="font-size: 2.5em; margin-bottom: 20px;">Sign In or Register</h4>
+                <div class="auth-container" style="font-size: 1.2em;">
+                    <!-- Registration Form -->
+                    <form id="register-form" style="margin-bottom: 20px;">
+                        <h3 style="font-size: 2em; margin-bottom: 10px;">Register</h3>
+                        <input type="email" id="register-email" placeholder="Email" required
+                            style="font-size: 1.2em; padding: 10px; width: 100%; margin-bottom: 10px;">
+                        <input type="password" id="register-password" placeholder="Password" required
+                            style="font-size: 1.2em; padding: 10px; width: 100%; margin-bottom: 20px;">
+                        <button type="button" onclick="register()"
+                            style="font-size: 1.5em; padding: 10px 20px;">Register</button>
+                    </form>
+
+                    <!-- Login Form -->
+                    <form id="login-form" style="margin-bottom: 20px;">
+                        <h3 style="font-size: 2em; margin-bottom: 10px;">Login</h3>
+                        <input type="email" id="login-email" placeholder="Email" required
+                            style="font-size: 1.2em; padding: 10px; width: 100%; margin-bottom: 10px;">
+                        <input type="password" id="login-password" placeholder="Password" required
+                            style="font-size: 1.2em; padding: 10px; width: 100%; margin-bottom: 20px;">
+                        <button type="button" onclick="login()"
+                            style="font-size: 1.5em; padding: 10px 20px;">Login</button>
+                    </form>
+
+                    <!-- Sign Out Button -->
+                    <button id="sign-out-btn" style="display:none; font-size: 1.5em; padding: 10px 20px;"
+                        onclick="logout()">Sign Out</button>
+                </div>
+            </section>
+        </main>
     </div>
-    <!-- https://wallpapers.com/images/featured/food-4k-1pf6px6ryqfjtnyr.jpg -->
-<div class="sidebars">
-    <main>
-        <section>
-            <h4>About</h4>
-            <div class = "text-box">
-                <p>Welcome to your go-to solution for smart cooking ideas to save money on groceries and minimize food waste! Our platform is designed to
-                    support college students who are new to cooking and meal planning as they transition into off-campus life. Without the convenience of meal
-                    plans, many students find themselves struggling with over-purchasing, food spoilage, and the frustration of unused ingredients. That's
-                    where we come in! 
-                </p>
-            </div>
-
-        </section>
-        <section>
-            <h4>Mission Statement</h4>
-            <div class = "text-box">
-                <p>We offer a user-friendly, web-based platform that makes meal planning easy and efficient. By taking your dietary preferences and grocery list
-                    items, our platform will curate easy-to-make recipes with only a few additional ingredients you need, reducing food waste and keeping your
-                    budget in check. You'll find recipe suggestions that prioritize perishable items for immediate use, helping you make the most of your groceries
-                    and avoid unnecessary waste. With built-in features to input your ingredients and accessible recipe options, our platform brings convenience and
-                    sustainability to every meal. 
-                </p>
-            </div>
-        </section>
-
-    </main>
-</div>
-
 
     <footer>
         <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fug
-            </p>
+            <p></p>
         </div>
-        
     </footer>
 
+    <script>
+        // Firebase configuration and initialization
+        const firebaseConfig = {
+            apiKey: "AIzaSyC668JiRpUoysN-OjMk6bd2GN5jh8zswBs",
+            authDomain: "info4125-final.firebaseapp.com",
+            projectId: "info4125-final",
+            storageBucket: "info4125-final.firebasestorage.app",
+            messagingSenderId: "318207991807",
+            appId: "1:318207991807:web:a93c73386323ee715b91ca"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+        // Register new user with email and password
+        function register() {
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert(`Registration successful. Welcome, ${userCredential.user.email}`);
+                    document.getElementById('sign-out-btn').style.display = 'block';
+                    document.getElementById('register-form').style.display = 'none';
+                    document.getElementById('login-form').style.display = 'none';
+                })
+                .catch((error) => {
+                    console.error('Error during registration:', error.message);
+                    alert(error.message);
+                });
+        }
+
+        // Login existing user with email and password
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    alert(`Login successful. Welcome back, ${userCredential.user.email}`);
+                    document.getElementById('auth-greeting').innerText = `Hello, ${userCredential.user.email}`;
+                    document.getElementById('sign-out-btn').style.display = 'block';
+                    document.getElementById('register-form').style.display = 'none';
+                    document.getElementById('login-form').style.display = 'none';
+                })
+                .catch((error) => {
+                    console.error('Error during login:', error.message);
+                    alert(error.message);
+                });
+        }
+
+        // Logout user
+        function logout() {
+            auth.signOut()
+                .then(() => {
+                    alert('You have signed out.');
+                    document.getElementById('auth-greeting').innerText = 'Sign In or Register';
+                    document.getElementById('sign-out-btn').style.display = 'none';
+                    document.getElementById('register-form').style.display = 'block';
+                    document.getElementById('login-form').style.display = 'block';
+                })
+                .catch((error) => {
+                    console.error('Error during sign-out:', error);
+                });
+        }
+    </script>
 </body>
+
 </html>

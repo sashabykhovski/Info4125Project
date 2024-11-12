@@ -77,6 +77,13 @@ header div h1{
     color: #ffffff;
     font-size: 50px;
 }
+
+section h4 {
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
 header div h4{
     max-width: 600px;
     margin: auto;
@@ -159,10 +166,14 @@ ul{
 }
 
 .sidebars{
-    display: flex;
-    flex: 1;
     margin: auto;
     max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+    flex-grow: 1;
 }
 
 /*  */
@@ -223,3 +234,21 @@ ul{
     /* box-shadow: 0 4px 8px #0000001a; */
 }
 
+#auth-greeting {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.about-section {
+    font-size: 1.8em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.mission-section {
+    font-size: 1.8em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
