@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Smart Pantry</title>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
 </head>
 
 <body>
@@ -20,12 +23,8 @@
                 </ul>
             </nav>
         </div>
-        <!-- <div class = "image-row">
-            <img src="foodpic1.jpg" alt="background" width="400" height="200">
-            <img src="foodpic.jpg" alt="background" width="400" height="200">
-            <img src="foodpic2.jpeg" alt="background" width="400" height="200">
-        </div> -->
     </header>
+
     <div class="hero" style="height: 200px;">
         <img src="images/food-heroimg.jpg" alt="background">
     </div>
@@ -35,37 +34,32 @@
             <div class="form-div">
                 <h2>Meal Planner</h2><br>
 
-                <form action="/recipes.html" method="POST" class="meal-form">
-
+                <form id="meal-form" class="meal-form">
                     <label for="vegetable">Vegetable:</label>
                     <input type="text" id="vegetable" name="vegetable" placeholder="Enter a vegetable"><br>
-
 
                     <label for="protein">Protein:</label>
                     <input type="text" id="protein" name="protein" placeholder="Enter a protein"><br>
 
-
                     <label for="carb">Carbohydrate:</label>
                     <input type="text" id="carb" name="carb" placeholder="Enter a carbohydrate"><br>
-
 
                     <button type="submit">Submit Meal</button>
                 </form>
             </div>
-
         </aside>
-        <main>
-            <h1> *Note* this is where the recipes will show when form is submitted</h1>
 
-
+        <main id="recipes-list">
+            <h2>Recipes</h2>
         </main>
-
     </div>
+
     <footer>
         <div>
-            <p></p>
+            <p>&copy; 2024 Smart Pantry</p>
         </div>
     </footer>
+
 </body>
 
 </html>
