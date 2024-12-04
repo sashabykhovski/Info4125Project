@@ -14,10 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const filteredRecipes = data.filter(function (recipe) {
         const ingredients = recipe.ingredients.toLowerCase();
         return (
-          ((vegetable === "" || ingredients.includes(vegetable)) &&
-            (protein === "" || ingredients.includes(protein))) ||
-          carb === "" ||
-          ingredients.includes(carb)
+          (vegetable === "" || ingredients.includes(vegetable)) &&
+          (protein === "" || ingredients.includes(protein)) &&
+          (carb === "" || ingredients.includes(carb))
         );
       });
 
