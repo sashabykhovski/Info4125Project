@@ -9,11 +9,45 @@ document.addEventListener("DOMContentLoaded", function () {
         .value.toLowerCase();
       const protein = document.getElementById("protein").value.toLowerCase();
       const carb = document.getElementById("carb").value.toLowerCase();
+      const dietaryRestrictions = document
+        .getElementById("dietary-restrictions")
+        .value.toLowerCase()
+        .split(",")
+        .map((restriction) => restriction.trim());
 
-      // Filter recipes based on the ingredients
+      // Convert dietary restrictions into ingredient keywords for filtering
+      const dietaryKeywords = {
+        dairy: ["milk", "cheese", "butter", "yogurt", "cream"],
+        gluten: ["wheat", "barley", "rye", "bread", "pasta"],
+        nuts: ["peanut", "almond", "cashew", "walnut", "hazelnut"],
+        soy: ["soy", "tofu", "soybean", "edamame"],
+        egg: ["egg", "eggs", "eggplant"],
+        shellfish: ["shrimp", "lobster", "crab", "oyster", "mussel"],
+        vegetarian: ["meat", "beef", "pork", "chicken", "fish"],
+      };
+
+      // Flatten dietary restrictions into a list of ingredients to filter
+      let restrictedIngredients = [];
+      dietaryRestrictions.forEach(function (restriction) {
+        if (dietaryKeywords[restriction]) {
+          restrictedIngredients = [
+            ...restrictedIngredients,
+            ...dietaryKeywords[restriction],
+          ];
+        }
+      });
+
+      // Filter recipes based on the ingredients and dietary concerns
       const filteredRecipes = data.filter(function (recipe) {
         const ingredients = recipe.ingredients.toLowerCase();
+
+        // Check if any restricted ingredient is in the recipe
+        const hasDietaryConcern = restrictedIngredients.some((ingredient) =>
+          ingredients.includes(ingredient)
+        );
+
         return (
+          !hasDietaryConcern && // Exclude recipes with restricted ingredients
           (vegetable === "" || ingredients.includes(vegetable)) &&
           (protein === "" || ingredients.includes(protein)) &&
           (carb === "" || ingredients.includes(carb))
@@ -57,7 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         recipesList
           .append("p")
-          .text("No recipes found matching your ingredients.");
+          .text(
+            "No recipes found matching your ingredients and dietary concerns."
+          );
       }
     }
   });
