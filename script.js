@@ -1,3 +1,103 @@
+// Import Firebase SDK modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
+import {
+  getAuth,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+} from "https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js";
+
+// Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC668JiRpUoysN-OjMk6bd2GN5jh8zswBs",
+  authDomain: "info4125-final.firebaseapp.com",
+  projectId: "info4125-final",
+  storageBucket: "info4125-final.firebasestorage.app",
+  messagingSenderId: "318207991807",
+  appId: "1:318207991807:web:a93c73386323ee715b91ca",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Handle authentication state changes
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    console.log("User logged in:", user);
+    loadFavorites(user.uid); // Load user-specific favorites from Firestore
+  } else {
+    console.log("User not logged in.");
+  }
+});
+
+// Load favorites from Firestore
+function loadFavorites(userId) {
+  const favoritesContainer = document.getElementById("favorites-container");
+  favoritesContainer.innerHTML = ""; // Clear favorites list
+
+  const favoritesRef = doc(db, "favorites", userId);
+  getDoc(favoritesRef).then((docSnap) => {
+    if (docSnap.exists()) {
+      const favorites = docSnap.data().recipes || [];
+      favorites.forEach((recipe) => {
+        addFavoriteToList(recipe);
+      });
+    }
+  });
+}
+
+// Add recipe to the favorites list
+function addFavoriteToList(recipe) {
+  const favoritesContainer = document.getElementById("favorites-container");
+  const favoriteDiv = document.createElement("div");
+  favoriteDiv.className = "favorite-item";
+  favoriteDiv.innerHTML = `
+      <p>${recipe.name}</p>
+      <button class="remove-favorite" data-id="${recipe.id}">Remove</button>
+  `;
+  favoritesContainer.appendChild(favoriteDiv);
+
+  // Add remove functionality
+  favoriteDiv
+    .querySelector(".remove-favorite")
+    .addEventListener("click", () => {
+      toggleFavorite(recipe.id);
+    });
+}
+
+// Toggle favorite status (like/unlike)
+function toggleFavorite(recipeId) {
+  const user = auth.currentUser;
+  if (user) {
+    const favoritesRef = doc(db, "favorites", user.uid);
+
+    getDoc(favoritesRef).then((docSnap) => {
+      const currentFavorites = docSnap.exists() ? docSnap.data().recipes : [];
+
+      if (currentFavorites.some((recipe) => recipe.id === recipeId)) {
+        // Remove recipe from favorites
+        const updatedFavorites = currentFavorites.filter(
+          (recipe) => recipe.id !== recipeId
+        );
+        setDoc(favoritesRef, { recipes: updatedFavorites });
+        loadFavorites(user.uid); // Reload favorites
+      } else {
+        // Add recipe to favorites
+        const recipe = { id: recipeId, name: `Recipe ${recipeId}` }; // Replace with actual data
+        currentFavorites.push(recipe);
+        setDoc(favoritesRef, { recipes: currentFavorites });
+        loadFavorites(user.uid); // Reload favorites
+      }
+    });
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   d3.csv("dataset/recipes.csv").then(function (data) {
     const form = document.getElementById("meal-form");

@@ -8,7 +8,7 @@
     <title>Smart Pantry</title>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js" defer></script>
 </head>
 
 <body>
@@ -30,29 +30,38 @@
     </div>
 
     <div class="sidebars">
-        <aside style="width: 400px;">
-            <div class="form-div">
-                <h2>Meal Planner</h2><br>
+        <div class="form-div">
+            <h2>Meal Planner</h2><br>
 
-                <form id="meal-form" class="meal-form">
-                    <label for="vegetable">Vegetable:</label>
-                    <input type="text" id="vegetable" name="vegetable" placeholder="Enter a vegetable"><br>
+            <form id="meal-form" class="meal-form">
+                <label for="vegetable">Vegetable:</label>
+                <input type="text" id="vegetable" name="vegetable" placeholder="Enter a vegetable"><br>
 
-                    <label for="protein">Protein:</label>
-                    <input type="text" id="protein" name="protein" placeholder="Enter a protein"><br>
+                <label for="protein">Protein:</label>
+                <input type="text" id="protein" name="protein" placeholder="Enter a protein"><br>
 
-                    <label for="carb">Carbohydrate:</label>
-                    <input type="text" id="carb" name="carb" placeholder="Enter a carbohydrate"><br>
+                <label for="carb">Carbohydrate:</label>
+                <input type="text" id="carb" name="carb" placeholder="Enter a carbohydrate"><br>
 
-                    <label for="dietary-restrictions">Dietary Restrictions (e.g., dairy, gluten):</label>
-                    <input type="text" id="dietary-restrictions" name="dietary-restrictions"
-                        placeholder="Enter dietary concerns (comma-separated)"><br>
+                <label for="dietary-restrictions">Dietary Concerns:</label>
+                <input type="text" id="dietary-restrictions" name="dietary-restrictions"
+                    placeholder="Enter dietary concern (e.g. dairy, gluten)"><br>
 
-                    <button type="submit">Submit Meal</button>
-                </form>
+                <button type="submit">Submit Meal</button>
+            </form>
+        </div>
+
+        <!-- Favorites Section -->
+        <div id="favorites-list" style="width: 300px; overflow-y: auto;">
+            <h3>Favorites</h3>
+            <div id="favorites-container" style="max-height: 400px; overflow-y: scroll;">
+                <p>No favorites yet.</p>
             </div>
-        </aside>
+        </div>
 
+    </div>
+
+    <div>
         <main id="recipes-list">
             <h2>Recipes</h2>
         </main>
