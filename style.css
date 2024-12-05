@@ -169,7 +169,7 @@ ul{
     margin: auto;
     max-width: 1400px;
     display: flex;
-    flex-direction: row; /* Changed from column to row */
+    flex-direction: row;
     justify-content: space-between;
     padding: 20px;
     gap: 20px;
@@ -177,18 +177,18 @@ ul{
 }
 
 #favorites-list {
-    flex: 0 0 300px; /* Fixed width for the favorites section */
+    flex: 0 0 300px;
     overflow-y: auto;
 }
 
 form {
-    flex-grow: 1; /* Allow the form to take up the remaining space */
+    flex-grow: 1;
 }
 
 .meal-form {
     display: flex;
     flex-direction: column;
-    gap: 10px; /* Optional: adds space between form fields */
+    gap: 10px;
     flex-grow: 1;
 
 }
@@ -254,7 +254,6 @@ form {
     padding: 1.5rem;
     background-color: white;
     border-radius: 8px;
-    /* box-shadow: 0 4px 8px #0000001a; */
 }
 
 #auth-greeting {

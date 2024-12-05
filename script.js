@@ -1,4 +1,3 @@
-// Import Firebase SDK modules
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js";
 import {
   getAuth,
@@ -26,11 +25,10 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// Handle authentication state changes
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("User logged in:", user);
-    loadFavorites(user.uid); // Load user-specific favorites from Firestore
+    loadFavorites(user.uid);
   } else {
     console.log("User not logged in.");
   }
@@ -39,7 +37,7 @@ onAuthStateChanged(auth, (user) => {
 // Load favorites from Firestore
 function loadFavorites(userId) {
   const favoritesContainer = document.getElementById("favorites-container");
-  favoritesContainer.innerHTML = ""; // Clear favorites list
+  favoritesContainer.innerHTML = "";
 
   const favoritesRef = doc(db, "favorites", userId);
   getDoc(favoritesRef).then((docSnap) => {
@@ -81,18 +79,16 @@ function toggleFavorite(recipeId) {
       const currentFavorites = docSnap.exists() ? docSnap.data().recipes : [];
 
       if (currentFavorites.some((recipe) => recipe.id === recipeId)) {
-        // Remove recipe from favorites
         const updatedFavorites = currentFavorites.filter(
           (recipe) => recipe.id !== recipeId
         );
         setDoc(favoritesRef, { recipes: updatedFavorites });
-        loadFavorites(user.uid); // Reload favorites
+        loadFavorites(user.uid);
       } else {
-        // Add recipe to favorites
-        const recipe = { id: recipeId, name: `Recipe ${recipeId}` }; // Replace with actual data
+        const recipe = { id: recipeId, name: `Recipe ${recipeId}` };
         currentFavorites.push(recipe);
         setDoc(favoritesRef, { recipes: currentFavorites });
-        loadFavorites(user.uid); // Reload favorites
+        loadFavorites(user.uid);
       }
     });
   }
